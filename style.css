@@ -1,0 +1,87 @@
+/* =========================================================
+   FONT MARIANNE
+   ========================================================= */
+
+@font-face {
+    font-family: "Marianne";
+    src: url("fonts/Marianne-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Marianne";
+    src: url("fonts/Marianne-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Marianne";
+    src: url("fonts/Marianne-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =========================================================
+   POLICE PAR DÉFAUT
+   ========================================================= */
+
+html {
+    font-family: "Marianne", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: "Marianne", Arial, sans-serif;
+}
+
+
+/* Tous les éléments héritent de Marianne */
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   TITRES
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Marianne", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   LIENS
+   ========================================================= */
+
+a {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+p,
+li,
+blockquote,
+figcaption {
+    font-family: inherit;
+}
