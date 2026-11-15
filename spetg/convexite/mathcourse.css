@@ -1,0 +1,267 @@
+/* ==========================================================
+   MathCourse.css — composants pour un cours de mathématiques
+   Utilisation : <link rel="stylesheet" href="mathcourse.css">
+   Classes : .definition, .propriete, .theoreme, .exemple, .remarque
+   ========================================================== */
+
+:root {
+  color-scheme: light;
+  --mc-ink: #202938;
+  --mc-muted: #657184;
+  --mc-paper: #ffffff;
+  --mc-page: #f4f6fa;
+  --mc-line: #e5eaf1;
+  --mc-radius: 16px;
+  --mc-shadow: 0 8px 24px rgb(26 39 60 / 6%);
+  --mc-font: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mc-math-font: "STIX Two Math", "Cambria Math", "Latin Modern Math", serif;
+
+  --mc-definition: #2563eb;
+  --mc-definition-bg: #eff6ff;
+  --mc-property: #0f766e;
+  --mc-property-bg: #ecfdf5;
+  --mc-theorem: #7c3aed;
+  --mc-theorem-bg: #f5f3ff;
+  --mc-example: #c26a16;
+  --mc-example-bg: #fff7ed;
+  --mc-remark: #64748b;
+  --mc-remark-bg: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: clamp(1rem, 4vw, 3rem);
+  color: var(--mc-ink);
+  background: var(--mc-page);
+  font-family: var(--mc-font);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Colonne de lecture facultative */
+.cours {
+  width: min(100%, 900px);
+  margin-inline: auto;
+}
+
+/* Style commun à tous les environnements */
+.definition,
+.propriete,
+.theoreme,
+.exemple,
+.remarque {
+  --mc-accent: var(--mc-remark);
+  --mc-tint: var(--mc-remark-bg);
+
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.4rem 1.25rem;
+  overflow: hidden;
+  background: var(--mc-paper);
+  border: 1px solid var(--mc-line);
+  border-left: 5px solid var(--mc-accent);
+  border-radius: var(--mc-radius);
+  box-shadow: var(--mc-shadow);
+}
+
+/* Bandeau de titre */
+.definition::before,
+.propriete::before,
+.theoreme::before,
+.exemple::before,
+.remarque::before {
+  display: block;
+  margin: -1.2rem -1.4rem 1rem;
+  padding: 0.55rem 1.4rem;
+  color: var(--mc-accent);
+  background: var(--mc-tint);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Environnements */
+.definition {
+  --mc-accent: var(--mc-definition);
+  --mc-tint: var(--mc-definition-bg);
+}
+.definition::before { content: "Définition"; }
+
+.propriete {
+  --mc-accent: var(--mc-property);
+  --mc-tint: var(--mc-property-bg);
+}
+.propriete::before { content: "Propriété"; }
+
+.theoreme {
+  --mc-accent: var(--mc-theorem);
+  --mc-tint: var(--mc-theorem-bg);
+}
+.theoreme::before { content: "Théorème"; }
+
+.exemple {
+  --mc-accent: var(--mc-example);
+  --mc-tint: var(--mc-example-bg);
+}
+.exemple::before { content: "Exemple"; }
+
+.remarque {
+  --mc-accent: var(--mc-remark);
+  --mc-tint: var(--mc-remark-bg);
+}
+.remarque::before { content: "Remarque"; }
+
+/* Numérotation ou précision facultative dans le titre */
+.definition[data-title]::before,
+.propriete[data-title]::before,
+.theoreme[data-title]::before,
+.exemple[data-title]::before,
+.remarque[data-title]::before {
+  content: attr(data-title);
+}
+
+/* Typographie à l'intérieur des blocs */
+.definition p,
+.propriete p,
+.theoreme p,
+.exemple p,
+.remarque p {
+  margin: 0.55rem 0;
+}
+
+.definition p:first-child,
+.propriete p:first-child,
+.theoreme p:first-child,
+.exemple p:first-child,
+.remarque p:first-child {
+  margin-top: 0;
+}
+
+.definition p:last-child,
+.propriete p:last-child,
+.theoreme p:last-child,
+.exemple p:last-child,
+.remarque p:last-child {
+  margin-bottom: 0;
+}
+
+.definition strong,
+.propriete strong,
+.theoreme strong,
+.exemple strong,
+.remarque strong {
+  color: var(--mc-accent);
+}
+
+.definition ul,
+.propriete ul,
+.theoreme ul,
+.exemple ul,
+.remarque ul,
+.definition ol,
+.propriete ol,
+.theoreme ol,
+.exemple ol,
+.remarque ol {
+  margin: 0.6rem 0;
+  padding-left: 1.4rem;
+}
+
+.definition li,
+.propriete li,
+.theoreme li,
+.exemple li,
+.remarque li {
+  margin: 0.25rem 0;
+}
+
+/* Formules : fonctionne avec du texte mathématique simple
+   et cohabite avec MathJax ou KaTeX. */
+.math,
+.math-display {
+  font-family: var(--mc-math-font);
+}
+
+.math-display {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.12em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Petit label facultatif : "À retenir", "Méthode", etc. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.2rem 0.35rem 0.2rem 0;
+  padding: 0.16rem 0.55rem;
+  color: var(--mc-muted);
+  background: #eef1f6;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+}
+
+/* Variante compacte : ajouter class="definition compact", etc. */
+.compact {
+  margin-block: 1rem;
+  padding: 0.9rem 1.1rem 1rem;
+  border-radius: 12px;
+}
+.compact::before {
+  margin: -0.9rem -1.1rem 0.75rem;
+  padding: 0.45rem 1.1rem;
+}
+
+/* Impression / export PDF */
+@media print {
+  body {
+    padding: 0;
+    color: #111827;
+    background: #fff;
+    font-size: 10.5pt;
+  }
+
+  .definition,
+  .propriete,
+  .theoreme,
+  .exemple,
+  .remarque {
+    break-inside: avoid;
+    box-shadow: none;
+    border-color: #d1d5db;
+  }
+}
+
+/* Petits écrans */
+@media (max-width: 600px) {
+  body {
+    padding: 0.85rem;
+    font-size: 0.96rem;
+  }
+
+  .definition,
+  .propriete,
+  .theoreme,
+  .exemple,
+  .remarque {
+    padding: 1rem 1.05rem;
+    border-radius: 12px;
+  }
+
+  .definition::before,
+  .propriete::before,
+  .theoreme::before,
+  .exemple::before,
+  .remarque::before {
+    margin: -1rem -1.05rem 0.8rem;
+    padding-inline: 1.05rem;
+  }
+}
