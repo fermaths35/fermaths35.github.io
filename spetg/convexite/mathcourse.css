@@ -265,3 +265,32 @@ body {
     padding-inline: 1.05rem;
   }
 }
+
+/* Conteneur vidéo */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 2rem auto;
+}
+
+/* Vidéo responsive et centrée */
+.video-container video {
+    display: block;
+
+    width: 80%;
+    max-width: 900px;
+    height: auto;
+
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgb(26 39 60 / 12%);
+}
+
+/* Adaptation aux petits écrans */
+@media (max-width: 600px) {
+    .video-container video {
+        width: 100%;
+    }
+}
